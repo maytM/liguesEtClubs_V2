@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\liguesEtClubs_V2.props" />
+</Project>

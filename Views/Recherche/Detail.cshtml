@@ -1,0 +1,82 @@
+﻿@model liguesEtClubs_V2.Models.Club
+
+@{
+    Layout = "_Layout";
+}
+
+<main class="container p-5 flex-grow-1">
+
+    <div class="row pb-3">
+        <!-- <h1></h1> -->
+    </div>
+
+    <div class="row">
+        <form class="row" method="POST" action="https://www.w3schools.com/action_page.php">
+
+            <div class="row">
+                <div class="col-12 col-md-4">
+
+                    <div class="card p-4">
+                        <img src="@Model.Image" class="card-img-top img-fluid" alt="Image de l'entité">
+                        <div class="card-body">
+                            <a href="#" class="btn btn-outline-info text-dark"> PERSONNAGE VEDETTE !</a>
+                        </div>
+                    </div>
+
+                    <div class="pt-2">
+                    </div>
+
+                    <div class="champ_cacher">
+                        <input type="hidden" class="form-control" id="nom" name="nom">
+                    </div>
+
+                    <div class="pt-2 text-center">
+                        <button type="submit" class="btn btn-primary mb-3">FAVORIS <i class="fa-solid fa-plus"></i> </button>
+                    </div>
+
+                </div>
+                <div class="col col-md-8">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"> <h1 class="text-center">DÉTAIL DU CLUB</h1> </li>
+                        <li class="list-group-item">Nom de la ligue : <span class="text-info">@Model.Ligue.Nom</span></li>
+                        <li class="list-group-item">Nom du club : <span class="text-info">@Model.Nom</span></li>
+                        <li class="list-group-item">Ville du club : <span class="text-info">@Model.Ville</span></li>
+                        <li class="list-group-item">Stade : <span class="text-info">@Model.Stade</span> </li>
+                        <li class="list-group-item">Capacité du stade : <span class="text-info">@Model.CapaciteStade places</span></li>
+                        <li class="list-group-item">Année de création du club : <span class="text-info">@Model.AnneeCreation</span></li>
+                        <li class="list-group-item">Surnom du club: <span class="text-info">@Model.Surnom</span></li>
+                       
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+
+                    <div class="accordion" id="accordionExample">
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <span class="fs-2 text-dark">Description du club</span>
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+
+                                    <p>
+                                        @Model.Description
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </form>
+    </div>
+</main>

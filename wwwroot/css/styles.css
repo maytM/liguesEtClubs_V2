@@ -1,0 +1,196 @@
+
+/* Définition des variables CSS */
+:root{
+   --light-color:#666;
+   --light-bg:#eee;
+   --white:#fff;
+   --black:#303030;
+   --blue:#17a2b8;
+   --blue-marine:#000080;
+   --bleu-clair : #87CEEB;
+   /* 2rem == 2 fois la taille de la police de l'élément racine  HTML */
+   --border:.1rem solid var(--light-color);
+   --box-shodow:0 .5rem 1rem rgba(0,0,0,.1);
+}
+
+/* css selection */
+*::selection{
+   background-color: var(--blue);
+   color: var(--white);
+}
+
+/* css scrollbar */
+*::-webkit-scrollbar{
+   height: .5rem; 
+   width: 1rem;
+}
+
+*::-webkit-scrollbar-track{
+   background-color: var(--light-bg); 
+}
+
+*::-webkit-scrollbar-thumb{
+   background-color:var(--blue);
+   border-radius: 5rem; 
+}
+
+/* css htlm et body */
+html,body{
+    height: 100%;
+    overflow-x: hidden;
+}
+
+body{
+   background-image:url("../images/bg4.jpg");
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+}
+
+/* header */
+header{
+   border-bottom: 4px solid var(--blue);
+   position: sticky; /* permet au header de rester fixe lors du défilement*/
+   top: 0;
+   z-index: 3;
+}
+
+.navbar-nav>li a{
+display: block;
+padding: 1.5rem 1rem !important;
+color: #000 !important;
+font-weight: 500;
+}
+
+.navbar-nav>li:hover,
+.navbar-nav>li.active
+{
+   background-color: var(--blue);
+   opacity: .6;
+}
+
+.navbar-nav>li:hover a,
+.navbar-nav>li.active a,
+.navbar-nav>li:hover i,
+.navbar-nav>li.active i
+{
+color: #fff!important;  /* force la couleur des liens  et des icones a la couleur blanche*/
+}
+
+.navbar-nav i{
+   color: var(--blue);
+}
+/* main */
+
+main #ligues .card{
+   cursor: pointer;
+   border: none;
+   box-shadow: 3px 5px 3px rgba(0, 0, 0,.1); 
+   transition: box-shadow 1s;
+}
+
+main #ligues ~ div .card:hover{  
+   box-shadow: 3px 5px 3px var(--blue),-3px -5px 3px var(--blue) !important;               
+} 
+
+
+main .card p{
+   text-align: justify;
+}
+
+main a{
+   display: block;
+   width: 100%;
+   height: 100%;
+   text-decoration: none;
+   color: black;
+}
+
+main a > .entity-card{   
+   height: 100%;
+   display: flex;
+}
+
+.table img{
+   width: 50px;
+}
+
+/* ballon flotant */
+.image_float img{
+   animation: float 3s linear infinite; 
+   border-radius: 50%;
+   width: 100px;
+   margin-top: 3rem;
+}
+
+@keyframes float{
+   0%, 100% {
+       transform: translateY(0rem);
+   }
+   50% {
+       transform: translateY(-3.5rem);
+   }
+}
+
+.image_rotation img {
+   animation: rotate 4s linear infinite; /* Ajout de l'animation de rotation */
+   border-radius: 50%;
+   width: 70px;
+   margin-top: 3rem;
+}
+
+@keyframes rotate {
+   0% {
+       transform: rotate(0deg); 
+   }
+   100% {
+       transform: rotate(360deg); 
+   }
+}
+
+/* search form*/
+.search-results {
+   background-color: transparent;
+   padding: 20px;
+   border-radius: 10px;
+}
+
+.search-results .card-body{
+   display: flex;
+   align-items: flex-end;
+   justify-content: center;
+}
+
+.search-form {
+   background-color: #f8f9fa;
+   padding: 20px;
+   border-radius: 10px;
+}
+.entity-card {
+   border: 1px solid #dee2e6;
+   border-radius: 10px;
+   /* margin-bottom: 20px; */
+   transition: box-shadow 0.3s ease;
+}
+.entity-card:hover {
+   box-shadow: 0px 0px 15px 0px var(--blue);
+}
+
+/* css footer*/
+footer span{
+   color: var(--blue);
+}
+
+@media (max-width:992px) {
+   #accordionExample{
+      margin-top: 2em;
+   }
+}
+
+@media (max-width:767px) { 
+   main .section_listeClubs-formulaire{
+      flex-direction: column-reverse;
+   }
+}
+
+
