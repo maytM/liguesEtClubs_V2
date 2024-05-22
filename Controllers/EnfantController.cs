@@ -3,19 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace liguesEtClubs_V2.Controllers
 {
-    public class RechercheController : Controller
+    public class EnfantController : Controller
     {
-        public IActionResult Index()
-        {
-            ViewBag.Title = "Recherche | Page";
-            ViewBag.ActiveMenuItem = "Recherche";
-
-            var baseDeDonnees = new BaseDeDonnees();
-            var donnees = baseDeDonnees.ObtenirListClubs();
-
-            return View(donnees);
-        }
-        public IActionResult ClubsLigue(int id)
+        
+        public IActionResult Recherche(int id=15)
         {
             ViewBag.ActiveMenuItem = "Recherche";
 
@@ -24,11 +15,19 @@ namespace liguesEtClubs_V2.Controllers
 
             var ClubsFiltrés = new List<Club>();
 
-            foreach (Club element in donnees)
+
+            if (id==15)
             {
-                if (id == element.Ligue.LigueID)
+                ClubsFiltrés = donnees;
+            }
+            else
+            {
+                foreach (Club element in donnees)
                 {
-                    ClubsFiltrés.Add(element);
+                    if (id == element.Ligue.LigueID)
+                    {
+                        ClubsFiltrés.Add(element);
+                    }
                 }
             }
 

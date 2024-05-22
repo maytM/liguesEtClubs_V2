@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "rsJ0uq9LL58mW+VsnH+TxO87IY9gpagmQ+PVHq95U5Anlnk9dIVawQxrheMjbQ1sfol7yxWuTh657Syh9NDYwg==",
+  "dgSpecHash": "mGZTG52cDJEsR67MuFsfGagqyzFqVWlbO5NaxDJuEil+Hj5BGPmegvG5zMQReDM5v1v99PVjBzRsUKVaofoqcg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\user\\Desktop\\project_cs\\liguesEtClubs_V2\\liguesEtClubs_V2.csproj",
+  "projectFilePath": "C:\\Users\\user\\Desktop\\liguesEtClubs_V2\\liguesEtClubs_V2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.extensions\\6.0.13\\microsoft.aspnetcore.mvc.razor.extensions.6.0.13.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.runtimecompilation\\6.0.13\\microsoft.aspnetcore.mvc.razor.runtimecompilation.6.0.13.nupkg.sha512",

@@ -1,111 +1,111 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\user\\Desktop\\project_cs\\liguesEtClubs_V2\\wwwroot\\css\\styles.css",
+      "Id": "C:\\Users\\user\\Desktop\\liguesEtClubs_V2\\wwwroot\\css\\styles.css",
       "PackagePath": "staticwebassets\\css\\styles.css"
     },
     {
-      "Id": "C:\\Users\\user\\Desktop\\project_cs\\liguesEtClubs_V2\\wwwroot\\images\\LesLigues.webp",
+      "Id": "C:\\Users\\user\\Desktop\\liguesEtClubs_V2\\wwwroot\\images\\LesLigues.webp",
       "PackagePath": "staticwebassets\\images\\LesLigues.webp"
     },
     {
-      "Id": "C:\\Users\\user\\Desktop\\project_cs\\liguesEtClubs_V2\\wwwroot\\images\\Logo_Real_Madrid.svg.png",
+      "Id": "C:\\Users\\user\\Desktop\\liguesEtClubs_V2\\wwwroot\\images\\Logo_Real_Madrid.svg.png",
       "PackagePath": "staticwebassets\\images\\Logo_Real_Madrid.svg.png"
     },
     {
-      "Id": "C:\\Users\\user\\Desktop\\project_cs\\liguesEtClubs_V2\\wwwroot\\images\\Olympique_Lyonnais.png",
+      "Id": "C:\\Users\\user\\Desktop\\liguesEtClubs_V2\\wwwroot\\images\\Olympique_Lyonnais.png",
       "PackagePath": "staticwebassets\\images\\Olympique_Lyonnais.png"
     },
     {
-      "Id": "C:\\Users\\user\\Desktop\\project_cs\\liguesEtClubs_V2\\wwwroot\\images\\arsenal.png",
+      "Id": "C:\\Users\\user\\Desktop\\liguesEtClubs_V2\\wwwroot\\images\\arsenal.png",
       "PackagePath": "staticwebassets\\images\\arsenal.png"
     },
     {
-      "Id": "C:\\Users\\user\\Desktop\\project_cs\\liguesEtClubs_V2\\wwwroot\\images\\atlético.png",
+      "Id": "C:\\Users\\user\\Desktop\\liguesEtClubs_V2\\wwwroot\\images\\atlético.png",
       "PackagePath": "staticwebassets\\images\\atlético.png"
     },
     {
-      "Id": "C:\\Users\\user\\Desktop\\project_cs\\liguesEtClubs_V2\\wwwroot\\images\\ballon.jpg",
+      "Id": "C:\\Users\\user\\Desktop\\liguesEtClubs_V2\\wwwroot\\images\\ballon.jpg",
       "PackagePath": "staticwebassets\\images\\ballon.jpg"
     },
     {
-      "Id": "C:\\Users\\user\\Desktop\\project_cs\\liguesEtClubs_V2\\wwwroot\\images\\ballon.png",
+      "Id": "C:\\Users\\user\\Desktop\\liguesEtClubs_V2\\wwwroot\\images\\ballon.png",
       "PackagePath": "staticwebassets\\images\\ballon.png"
     },
     {
-      "Id": "C:\\Users\\user\\Desktop\\project_cs\\liguesEtClubs_V2\\wwwroot\\images\\barca.png",
+      "Id": "C:\\Users\\user\\Desktop\\liguesEtClubs_V2\\wwwroot\\images\\barca.png",
       "PackagePath": "staticwebassets\\images\\barca.png"
     },
     {
-      "Id": "C:\\Users\\user\\Desktop\\project_cs\\liguesEtClubs_V2\\wwwroot\\images\\bg.jpg",
+      "Id": "C:\\Users\\user\\Desktop\\liguesEtClubs_V2\\wwwroot\\images\\bg.jpg",
       "PackagePath": "staticwebassets\\images\\bg.jpg"
     },
     {
-      "Id": "C:\\Users\\user\\Desktop\\project_cs\\liguesEtClubs_V2\\wwwroot\\images\\bg2.jpg",
+      "Id": "C:\\Users\\user\\Desktop\\liguesEtClubs_V2\\wwwroot\\images\\bg2.jpg",
       "PackagePath": "staticwebassets\\images\\bg2.jpg"
     },
     {
-      "Id": "C:\\Users\\user\\Desktop\\project_cs\\liguesEtClubs_V2\\wwwroot\\images\\bg3.jpg",
+      "Id": "C:\\Users\\user\\Desktop\\liguesEtClubs_V2\\wwwroot\\images\\bg3.jpg",
       "PackagePath": "staticwebassets\\images\\bg3.jpg"
     },
     {
-      "Id": "C:\\Users\\user\\Desktop\\project_cs\\liguesEtClubs_V2\\wwwroot\\images\\bg4.jpg",
+      "Id": "C:\\Users\\user\\Desktop\\liguesEtClubs_V2\\wwwroot\\images\\bg4.jpg",
       "PackagePath": "staticwebassets\\images\\bg4.jpg"
     },
     {
-      "Id": "C:\\Users\\user\\Desktop\\project_cs\\liguesEtClubs_V2\\wwwroot\\images\\chealse.png",
+      "Id": "C:\\Users\\user\\Desktop\\liguesEtClubs_V2\\wwwroot\\images\\chealse.png",
       "PackagePath": "staticwebassets\\images\\chealse.png"
     },
     {
-      "Id": "C:\\Users\\user\\Desktop\\project_cs\\liguesEtClubs_V2\\wwwroot\\images\\liga.png",
+      "Id": "C:\\Users\\user\\Desktop\\liguesEtClubs_V2\\wwwroot\\images\\liga.png",
       "PackagePath": "staticwebassets\\images\\liga.png"
     },
     {
-      "Id": "C:\\Users\\user\\Desktop\\project_cs\\liguesEtClubs_V2\\wwwroot\\images\\ligue1.png",
+      "Id": "C:\\Users\\user\\Desktop\\liguesEtClubs_V2\\wwwroot\\images\\ligue1.png",
       "PackagePath": "staticwebassets\\images\\ligue1.png"
     },
     {
-      "Id": "C:\\Users\\user\\Desktop\\project_cs\\liguesEtClubs_V2\\wwwroot\\images\\liverpool2.jpg",
+      "Id": "C:\\Users\\user\\Desktop\\liguesEtClubs_V2\\wwwroot\\images\\liverpool2.jpg",
       "PackagePath": "staticwebassets\\images\\liverpool2.jpg"
     },
     {
-      "Id": "C:\\Users\\user\\Desktop\\project_cs\\liguesEtClubs_V2\\wwwroot\\images\\logo.jpeg",
+      "Id": "C:\\Users\\user\\Desktop\\liguesEtClubs_V2\\wwwroot\\images\\logo.jpeg",
       "PackagePath": "staticwebassets\\images\\logo.jpeg"
     },
     {
-      "Id": "C:\\Users\\user\\Desktop\\project_cs\\liguesEtClubs_V2\\wwwroot\\images\\manCity.png",
+      "Id": "C:\\Users\\user\\Desktop\\liguesEtClubs_V2\\wwwroot\\images\\manCity.png",
       "PackagePath": "staticwebassets\\images\\manCity.png"
     },
     {
-      "Id": "C:\\Users\\user\\Desktop\\project_cs\\liguesEtClubs_V2\\wwwroot\\images\\manUnited.png",
+      "Id": "C:\\Users\\user\\Desktop\\liguesEtClubs_V2\\wwwroot\\images\\manUnited.png",
       "PackagePath": "staticwebassets\\images\\manUnited.png"
     },
     {
-      "Id": "C:\\Users\\user\\Desktop\\project_cs\\liguesEtClubs_V2\\wwwroot\\images\\marseille.jpeg",
+      "Id": "C:\\Users\\user\\Desktop\\liguesEtClubs_V2\\wwwroot\\images\\marseille.jpeg",
       "PackagePath": "staticwebassets\\images\\marseille.jpeg"
     },
     {
-      "Id": "C:\\Users\\user\\Desktop\\project_cs\\liguesEtClubs_V2\\wwwroot\\images\\monaco.png",
+      "Id": "C:\\Users\\user\\Desktop\\liguesEtClubs_V2\\wwwroot\\images\\monaco.png",
       "PackagePath": "staticwebassets\\images\\monaco.png"
     },
     {
-      "Id": "C:\\Users\\user\\Desktop\\project_cs\\liguesEtClubs_V2\\wwwroot\\images\\premierLigue2.png",
+      "Id": "C:\\Users\\user\\Desktop\\liguesEtClubs_V2\\wwwroot\\images\\premierLigue2.png",
       "PackagePath": "staticwebassets\\images\\premierLigue2.png"
     },
     {
-      "Id": "C:\\Users\\user\\Desktop\\project_cs\\liguesEtClubs_V2\\wwwroot\\images\\psg.png",
+      "Id": "C:\\Users\\user\\Desktop\\liguesEtClubs_V2\\wwwroot\\images\\psg.png",
       "PackagePath": "staticwebassets\\images\\psg.png"
     },
     {
-      "Id": "C:\\Users\\user\\Desktop\\project_cs\\liguesEtClubs_V2\\wwwroot\\images\\sevilla.png",
+      "Id": "C:\\Users\\user\\Desktop\\liguesEtClubs_V2\\wwwroot\\images\\sevilla.png",
       "PackagePath": "staticwebassets\\images\\sevilla.png"
     },
     {
-      "Id": "C:\\Users\\user\\Desktop\\project_cs\\liguesEtClubs_V2\\wwwroot\\images\\stadeRennais.png",
+      "Id": "C:\\Users\\user\\Desktop\\liguesEtClubs_V2\\wwwroot\\images\\stadeRennais.png",
       "PackagePath": "staticwebassets\\images\\stadeRennais.png"
     },
     {
-      "Id": "C:\\Users\\user\\Desktop\\project_cs\\liguesEtClubs_V2\\wwwroot\\images\\valencia.png",
+      "Id": "C:\\Users\\user\\Desktop\\liguesEtClubs_V2\\wwwroot\\images\\valencia.png",
       "PackagePath": "staticwebassets\\images\\valencia.png"
     },
     {
