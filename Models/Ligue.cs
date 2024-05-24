@@ -11,5 +11,6 @@
         public string? SiteWeb { get; set; }
         public int NombresDeClubs { get; set; }
 
+        public List<Club>? Clubs { get; set; }
     }
 }
