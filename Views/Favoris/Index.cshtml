@@ -1,73 +1,51 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model List<Club>
+
 @{
-    Layout = "_Layout";
+    ViewBag.Title = "Favoris | Clubs";
+    ViewBag.ActiveMenuItem = "Favoris";
 }
 
     <main class="container-fluid  p-5 flex-grow-1">
         <div class="row mt-4">
             <div class="col-10">
-                <form action="#">
+            
+                    
                     <div class="table-responsive-lg">
                         <table class="table ">
                             <thead class="table-dark">
                                 <tr>
-                                    <th scope="col">Image</th>
+                                <th scope="col">Image  </th>
                                     <th scope="col">Nom du club</th>
                                     <th scope="col">Nom de la ligue</th>
                                     <th scope="col">Pays</th>
-                                    <th scope="col">Action</th>
+                            <th scope="col">Action <span class="text-danger">@(ViewData["id"]==null ? "":"ID"+ViewData["id"] ) </span> </th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach(Club club in Model){
+                            <form action="/Favoris/Supprimer">
                                 <tr>
-                                    <th scope="row"><img src="images/manCity.png" class="img-fluid" alt="Image de l'entité"></th>
-                                    <td>Manchester City</td>
-                                    <td>Premier League</td>
-                                    <td>Angleterre</td>
+                                    <th scope="row"><img src="@(club.Image)" class="img-fluid" alt="Image de l'entité"></th>
+                                    <td>@(club.Nom)</td>
+                                    <td>@(club.Ligue.Nom)</td>
+                                    <td>@(club.Ligue.Pays)</td>
                                     <td>
+                                        <input type="hidden" class="form-control" value="@(club.ClubID)" name="id">
                                         <button type="submit" class="btn btn-danger mb-3"> <i class="fa fa-trash"></i> </button>
                                     </td>
                                 </tr>
-
-                                <tr>
-                                    <th scope="row"><img src="images/Logo_Real_Madrid.svg.png" class="img-fluid" alt="Image de l'entité"></th>
-                                    <td>Real Madrid</td>
-                                    <td>LaLiga</td>
-                                    <td>Espagne</td>
-                                    <td>
-                                        <button type="submit" class="btn btn-danger mb-3"> <i class="fa fa-trash"></i> </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><img src="images/barca.png" class="img-fluid" alt="Image de l'entité"></th>
-                                    <td>FC Barcelone</td>
-                                    <td>LaLiga</td>
-                                    <td>Espagne</td>
-                                    <td>
-                                        <button type="submit" class="btn btn-danger mb-3"> <i class="fa fa-trash"></i> </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><img src="images/psg.png" class="img-fluid" alt="Image de l'entité"></th>
-                                    <td>Paris Saint-Germain F.C</td>
-                                    <td>Ligue 1</td>
-                                    <td>France</td>
-                                    <td>
-                                        <button type="submit" class="btn btn-danger mb-3"> <i class="fa fa-trash"></i> </button>
-                                    </td>
-                                </tr>
+                            </form>
+                               }
 
                             </tbody>
                         </table>
                     </div>
-                </form>
+                
             </div>
 
             <div class="col-2 ">
                 <div class="text-center image_float">
-                    <img src="images/ballon.png" class="img-fluid" alt="">
+                    <img src="/images/ballon.png" class="img-fluid" alt="">
                 </div>
             </div>
 

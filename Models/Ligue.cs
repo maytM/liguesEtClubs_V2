@@ -9,8 +9,9 @@
         public string? Image { get; set; }
         public int AnneeCreation { get; set; }
         public string? SiteWeb { get; set; }
-        public int NombresDeClubs { get; set; }
+        public int NombresDeClubsReel { get; set; }
 
+        public string? EnSavoirPlus { get; set; }
         public List<Club>? Clubs { get; set; }
     }
 }

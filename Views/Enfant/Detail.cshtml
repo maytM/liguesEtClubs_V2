@@ -1,7 +1,7 @@
-﻿@model liguesEtClubs_V2.Models.Club
+﻿@model Club
 
 @{
-    Layout = "_Layout";
+    ViewBag.Title = "Detail | Club";
 }
 
 <main class="container p-5 flex-grow-1">
@@ -11,15 +11,23 @@
     </div>
 
     <div class="row">
-        <form class="row" method="POST" action="https://www.w3schools.com/action_page.php">
+        <form class="row" action="/Favoris/Ajouter">
 
             <div class="row">
                 <div class="col-12 col-md-4">
 
                     <div class="card p-4">
                         <img src="@Model.Image" class="card-img-top img-fluid" alt="Image de l'entité">
-                        <div class="card-body">
-                            <a href="#" class="btn btn-outline-info text-dark"> PERSONNAGE VEDETTE !</a>
+                        <div class="card-body text-center">
+                            @if (Model.EstElementVedette)
+                            {
+                                @* <a href="#" class="btn btn-outline-info text-dark"> Club VEDETTE !</a> *@
+                               @*  <span class="badge bg-info text-dark">Club VEDETTE !</span> *@
+                                <button class="btn btn-primary" type="button" disabled>
+                                    <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                                    Club VEDETTE !
+                                </button>
+                            }
                         </div>
                     </div>
 
@@ -27,7 +35,7 @@
                     </div>
 
                     <div class="champ_cacher">
-                        <input type="hidden" class="form-control" id="nom" name="nom">
+                        <input type="hidden" class="form-control" value="@(Model.ClubID)" name="id">
                     </div>
 
                     <div class="pt-2 text-center">
@@ -45,6 +53,7 @@
                         <li class="list-group-item">Capacité du stade : <span class="text-info">@Model.CapaciteStade places</span></li>
                         <li class="list-group-item">Année de création du club : <span class="text-info">@Model.AnneeCreation</span></li>
                         <li class="list-group-item">Surnom du club: <span class="text-info">@Model.Surnom</span></li>
+                        <li class="list-group-item">Nombre de titre au championat: <span class="text-info">@Model.NombreTitreAuChampionat</span></li>
                        
                     </ul>
                 </div>

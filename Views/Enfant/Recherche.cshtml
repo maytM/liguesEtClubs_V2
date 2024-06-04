@@ -1,6 +1,8 @@
-﻿@model List<liguesEtClubs_V2.Models.Club>
+﻿@model PageRechercheViewModel
+
 @{
-    Layout = "_Layout";
+    ViewBag.ActiveMenuItem = "Recherche";
+    ViewBag.Title = "Recherche | Clubs | Par Ligue";
 }
 
     <main class="container p-0 flex-grow-1">
@@ -14,13 +16,15 @@
                         <div class="row">
                             <!-- Clubs -->
                             <!-- Entité enfant -->
-                            @foreach(var item in Model){
+                            @foreach(Club club in Model.Resultat){
                             <div class="col-12 col-md-4 mb-3 mt-1">
-                                <a href="/Enfant/Detail/@(item.ClubID)" class="text-decoration-none" title="@(item.Nom)">
+                                <a href="/Enfant/Detail/@(club.ClubID)" class="text-decoration-none" title="@(club.Nom)">
                                     <div class="card entity-card p-1">
-                                        <img src="@(item.Image)" class="card-img-top img-fluid" alt="Image de l'entité">
+                                        <img src="@(club.Image)" class="card-img-top img-fluid" alt="Image de l'entité">
                                         <div class="card-body">
-                                            <h2 class="card-title">@(item.Ligue.Nom)</h2>
+                                            <div class="row text-center">
+                                                <h4 class="text-info">@club.Nom</h4>
+                                            </div>
                                         </div>
                                     </div>
                                 </a>
@@ -43,50 +47,85 @@
                             </div>
                         </div>
 
-                        <form action="https://www.w3schools.com/action_page.php" method="POST">
+                    <form action="/Enfant/RechercheClub" method="POST">
                             <div class="form-group">
-                                <label for="text-filter">Recherche par mots-clés :</label>
-                                <input type="text" class="form-control" id="text-filter" name="text-filter">
+                                <label for="MotsCles">Recherche par mots-clés :</label>
+                            <input type="text" class="form-control" value="@Model.Criteres.MotsCles" id="MotsCles" name="MotsCles">
                             </div>
                             <div class="form-group">
-                                <label for="numeric-filter">Filtre numérique :</label>
-                                <input type="number" class="form-control" id="numeric-filter" name="numeric-filter">
+                                <label for="numeric-filter">Nombre de titres au championat :</label>
+                            <div class="row">
+                                <div class="col">
+                                    <input type="number" class="form-control" min="0" value="@Model.Criteres.MinTitreAuChampionat" placeholder="Min" id="numeric-filter" name="MinTitreAuChampionat">                                   
+                                </div>
+                                <div class="col">                                    
+                                    <input type="number" class="form-control" min="1" value="@Model.Criteres.MaxTitreAuChampionat" placeholder="Max" name="MaxTitreAuChampionat">
+                                </div>
                             </div>
+                        </div>
                             <div class="form-group">
-                                <label for="feature-filter">Club vedette :</label>
-                                <select class="form-control" id="feature-filter" name="feature-filter">
-                                    <option value="">Peu importe</option>
-                                    <option value="oui">Oui</option>
-                                    <option value="non">Non</option>
+                                <label for="choixPourClubVedette">Club vedette :</label>
+                            <select class=" form-select" aria-label="Default select example" id="choixPourClubVedette" name="choixPourClubVedette">
+                                <option value="" @(Model.Criteres.choixPourClubVedette == null ? "selected" : "")>Peu importe</option>
+                                <option value="Oui" @(Model.Criteres.choixPourClubVedette == "Oui" ? "selected" : "")>Oui</option>
+                                <option value="Non" @(Model.Criteres.choixPourClubVedette == "Non" ? "selected" : "")>Non</option>
                                 </select>
                             </div>
-                            <div class="form-group my-2">
+                            <div class="form-group my-2 mb-3">
 
                                 <span>Ligues :</span><br>
 
                                 <div class="form-check form-check">
-                                    <input class="form-check-input" type="checkbox" id="parent1" name="parent1" checked>
-                                    <label class="form-check-label" for="parent1">Premier League</label>
+
+                                @if (@Model.Criteres.EstClubPremierLigue){
+                                    <input class="form-check-input" type="checkbox" id="EstClubPremierLigue" name="EstClubPremierLigue" checked>
+                                }
+                                else
+                                {
+                                    <input class="form-check-input" type="checkbox" id="EstClubPremierLigue" name="EstClubPremierLigue">
+                                }
+                                <label class="form-check-label" for="EstClubPremierLigue"> Club Premier League</label>
                                 </div>
 
                                 <div class="form-check form-check">
-                                    <input class="form-check-input" type="checkbox" id="parent2" name="parent2">
-                                    <label class="form-check-label" for="parent2">La Liga</label>
+                                @if (@Model.Criteres.EstClubLiga)
+                                {
+                                    <input class="form-check-input" type="checkbox" id="EstClubLiga" name="EstClubLiga" checked>
+                                }
+                                else
+                                {
+                                    <input class="form-check-input" type="checkbox" id="EstClubLiga" name="EstClubLiga">
+                                }
+                                <label class="form-check-label" for="EstClubLiga">Club Liga</label>
 
                                 </div>
 
                                 <div class="form-check form-check">
-                                    <input class="form-check-input" type="checkbox" id="parent3" name="parent3">
-                                    <label class="form-check-label" for="parent3">Ligue 1</label>
+                                @if (@Model.Criteres.EstClubLigue1)
+                                {
+                                    <input class="form-check-input" type="checkbox" id="EstClubLigue1" name="EstClubLigue1" checked>
+                                }
+                                else
+                                {
+                                    <input class="form-check-input" type="checkbox" id="EstClubLigue1" name="EstClubLigue1">
+                                }
+                                <label class="form-check-label" for="EstClubLigue1">Club Ligue 1</label>
                                 </div>
 
                             </div>
-                            <button type="submit" class="btn btn-primary my-2 my-lg-0 mr-2"><i class="fa-solid fa-magnifying-glass"></i> Rechercher</button>
-                            <button type="reset" class="btn btn-secondary"><i class="fa-solid fa-arrows-rotate"></i> Réinitialiser</button>
+
+                        <div class="row text-center">
+                            <div class="col-6">
+                                <button type="submit" class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i> Rechercher</button>
+                            </div>
+
+                            <div class="col-6">
+                                <button type="reset" class="btn btn-secondary"><i class="fa-solid fa-arrows-rotate"></i> Réinitialiser</button>
+                            </div>
+                        </div>
+
                         </form>
                     </div>
-
-
 
                 </div>
             </div>

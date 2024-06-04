@@ -1,8 +1,11 @@
+using liguesEtClubs_V2.Models;
 using Microsoft.AspNetCore.Builder;
 //
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddMvc().AddRazorRuntimeCompilation(); //Besoin d'inclure la bibliothèque (package NuGet) : Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation
+
+builder.Services.AddSingleton<BaseDeDonnees>(); // Permet l'utilisation du Singleton
 
 var app = builder.Build();
 

@@ -12,6 +12,7 @@
         public int CapaciteStade { get; set; }
         public string? Surnom { get; set; }
         public bool EstElementVedette { get; set; }
+        public int NombreTitreAuChampionat { get; set; }
         public int LigueID { get; set; }
         public Ligue? Ligue { get; set; }
 

@@ -1,8 +1,4 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -18,7 +14,7 @@
     <header class="container-fluid px-0">
         <nav class="navbar navbar-expand-md py-md-0 bg-body-tertiary">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/Home#ligues"><i class="fa-regular fa-futbol"></i> Ligues de football </a>
+                <a class="navbar-brand" href="/Home/Index#ligues"><i class="fa-regular fa-futbol"></i> Ligues de football </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -31,14 +27,14 @@
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                             <li class="nav-item @((string)ViewBag.ActiveMenuItem == "Home" ? "active" : "") ">
 
-                                <a class="nav-link" aria-current="page" href="/Home#ligues"> <i class="fa-solid fa-house"></i> Accueil</a>
+                                <a class="nav-link" aria-current="page" href="/Home/Index#ligues"> <i class="fa-solid fa-house"></i> Accueil</a>
                             </li>
                             <li class="nav-item @((string)ViewBag.ActiveMenuItem == "Recherche" ? "active" : "")">
 
                                 <a class="nav-link" href="/Enfant/Recherche"> <i class="fa-solid fa-magnifying-glass"></i> Recherche</a>
                             </li>
                             <li class="nav-item @((string)ViewBag.ActiveMenuItem == "Favoris" ? "active" : "")">
-                                <a class="nav-link" href="/Favoris"> <i class="fa-regular fa-star"></i> Favoris</a>
+                                <a class="nav-link" href="/Favoris/Index"> <i class="fa-regular fa-star"></i> Favoris</a>
                             </li>
                         </ul>
                     </div>

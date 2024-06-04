@@ -1,8 +1,13 @@
-﻿@model List<liguesEtClubs_V2.Models.Ligue>
+﻿@model List<Ligue>
 
 @{
-    Layout = "_Layout";
+    ViewBag.Title = "Accueil | Ligues";
+    ViewBag.ActiveMenuItem = "Home";
+
+    var test = Model;
+
 }
+
 
     <main class="container p-5 flex-grow-1">
         <div class="row g-4 ">
@@ -11,83 +16,54 @@
 
                 <div class="col-2 ">
                     <div class="text-center image_rotation">
-                        <img src="images/ballon.png" class="img-fluid" alt="">
+                        <img src="/images/ballon.png" class="img-fluid" alt="">
                     </div>
                 </div>
 
             </div>
-
+    @foreach (Ligue ligue in Model)
+    {
             <div class="col-12 col-md-4">
                 <div class="card shadow h-100">
 
-                <a href="/Enfant/Recherche/@(Model[0].LigueID)">
-                    <img src="@(Model[0].Image)" class="card-img-top img-fluid" alt="...">
+                    <a href="/Enfant/Recherche/@(ligue.LigueID)">
+                    <img src="@(ligue.Image)" class="card-img-top img-fluid" alt="...">
                         <div class="card-body">
                             <h5 class="card-title mt-md-3">Pays et Clubs</h5>
                             <ul>
-                                <li>Pays: @(Model[0].Pays)</li>
-                            <li>Nombres de Clubs: @(Model[0].NombresDeClubs) </li>
+                                <li>Pays: <span class="text-info"> @(ligue.Pays) </span> </li>
+                                <li>Nombres de clubs: <span class="text-info">@(ligue.Clubs.Count())</span> </li>
+                                <li>
+                                    Moyenne titres remportés:
+                                    <span class="text-info">  @((double)ligue.Clubs.Sum(c => c.NombreTitreAuChampionat) / ligue.Clubs.Count()) </span>
+                                </li>
                             </ul>
                             <h5 class="card-title">Description</h5>
-                        <p class="card-text">@(Model[0].Description)</p>
+                        <p class="card-text">@(ligue.Description)</p>
                         </div>
                     </a>
-                    <button type="button" class="btn btn-outline-info  m-4" data-bs-toggle="modal" data-bs-target="#exampleModal"> En savoir plus <i class="fa-solid fa-circle-info"></i> </button>
+                    <button type="button" class="btn btn-outline-info  m-4" data-bs-toggle="modal" data-bs-target="#exampleModal@(ligue.LigueID)"> En savoir plus <i class="fa-solid fa-circle-info"></i> </button>
                 </div>
             </div>
-
-            <div class="col-12 col-md-4">
-                <div class="card shadow h-100">
-
-                <a href="/Enfant/Recherche/@(Model[1].LigueID)">
-                    <img src="@(Model[1].Image)" class="card-img-top img-fluid" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title mt-md-3">Pays et Clubs</h5>
-                        <ul>
-                            <li>Pays: @(Model[1].Pays)</li>
-                            <li>Nombres de Clubs: @(Model[1].NombresDeClubs) </li>
-                        </ul>
-                        <h5 class="card-title">Description</h5>
-                        <p class="card-text">@(Model[1].Description)</p>
-                    </div>
-                    </a>
-                    <button type="button" class="btn btn-outline-info  m-4" data-bs-toggle="modal" data-bs-target="#exampleModal2"> En savoir plus <i class="fa-solid fa-circle-info"></i> </button>
-                </div>
-            </div>
-            <div class="col-12 col-md-4">
-                <div class="card shadow h-100">
-
-                <a href="/Enfant/Recherche/@(Model[2].LigueID)">
-                    <img src="@(Model[2].Image)" class="card-img-top img-fluid" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title mt-md-3">Pays et Clubs</h5>
-                        <ul>
-                            <li>Pays: @(Model[2].Pays)</li>
-                            <li>Nombres de Clubs: @(Model[2].NombresDeClubs) </li>
-                        </ul>
-                        <h5 class="card-title">Description</h5>
-                        <p class="card-text">@(Model[2].Description)</p>
-                    </div>
-                    </a>
-                    <button type="button" class="btn btn-outline-info  m-4" data-bs-toggle="modal" data-bs-target="#exampleModal3"> En savoir plus <i class="fa-solid fa-circle-info"></i> </button>
-                </div>
-            </div>
+        }
         </div>
     </main>
     
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- Modals -->
+    @foreach (Ligue ligue in Model)
+    {
+    <div class="modal fade" id="exampleModal@(ligue.LigueID)" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Informations sur @(Model[0].Nom)</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Informations sur <span class="text-info">@(ligue.Nom)</span> </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                <h1>@(Model[0].Nom)</h1>
+                    <h1> <span class="text-info"> @(ligue.Nom) </span> </h1>
                     <p>
-                    @(Model[0].Description) Pour en savoir plus, consultez <a href="https://fr.wikipedia.org/wiki/Championnat_d'Angleterre_de_football" title="wikipedia"> wikipedia </a>.
+                        @(ligue.Description) Pour en savoir plus, consultez <a class="text-info" href="@(ligue.EnSavoirPlus)" title="wikipedia"> wikipedia </a>.
                     </p>
                 </div>
                 <div class="modal-footer">
@@ -96,46 +72,5 @@
             </div>
         </div>
     </div>
-    <!-- Modal 2 -->
-    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel2">Informations sur @(Model[1].Nom) </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                <h1>@(Model[1].Nom)</h1>
-                    <p>
-                    @(Model[1].Description) Pour en savoir plus, consultez <a href="https://fr.wikipedia.org/wiki/Championnat_d%27Espagne_de_football" title="wikipedia"> wikipedia </a>.
-                    </p>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Modal 3 -->
-    <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel3">Informations sur la @(Model[2].Nom)</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                <h1> @(Model[2].Nom) </h1>
-                    <p>
-                    @(Model[2].Description) Pour en savoir plus, consultez <a href="https://fr.wikipedia.org/wiki/Championnat_de_France_de_football" title="wikipedia"> wikipedia </a>.
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
+}
  

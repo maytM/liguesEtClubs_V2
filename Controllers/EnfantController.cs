@@ -1,59 +1,195 @@
 ﻿using liguesEtClubs_V2.Models;
+using liguesEtClubs_V2.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace liguesEtClubs_V2.Controllers
 {
     public class EnfantController : Controller
     {
-        
-        public IActionResult Recherche(int id=15)
+        private BaseDeDonnees m_baseDeDonnees { get; set; }
+
+        public EnfantController(BaseDeDonnees baseDeDonnees)
         {
-            ViewBag.ActiveMenuItem = "Recherche";
+            m_baseDeDonnees = baseDeDonnees;
+        }
 
-            var baseDeDonnees = new BaseDeDonnees();
-            var donnees = baseDeDonnees.ObtenirListClubs();
+        [Route("enfant/Recherche/{id?}")]
+        public IActionResult Recherche(int? id)
+        {
 
-            var ClubsFiltrés = new List<Club>();
+            var model = new PageRechercheViewModel();
 
+            model.Criteres = new CritereRechercheViewModel();
 
-            if (id==15)
+            model.Criteres.MotsCles = "Real Madrid";
+            model.Criteres.choixPourClubVedette = null;
+
+            model.Criteres.EstClubPremierLigue = false;
+            model.Criteres.EstClubLiga = true;
+            model.Criteres.EstClubLigue1 = false;
+
+            model.Criteres.MinTitreAuChampionat = 1;
+            model.Criteres.MaxTitreAuChampionat = 36;
+
+            if (id==null)
             {
-                ClubsFiltrés = donnees;
+                model.Resultat = m_baseDeDonnees.Clubs.ToList();
             }
             else
             {
-                foreach (Club element in donnees)
-                {
-                    if (id == element.Ligue.LigueID)
-                    {
-                        ClubsFiltrés.Add(element);
-                    }
-                }
+                model.Resultat = m_baseDeDonnees.Clubs.Where(c => c.LigueID == id).ToList();
             }
-
-            if (ClubsFiltrés.Count>0)
-            {
-                return View(ClubsFiltrés);
-            }
-
-            return NotFound();
+            
+            return View(model);
         }
 
+        [Route("enfant/detail/{id:int}")]
+        [Route("enfant/{id:int}")]
+        [Route("{id:int}")]
+        public IActionResult DetailParID(int id)
+        {           
+            var clubRecherché = m_baseDeDonnees.Clubs.Where(c => c.ClubID == id).SingleOrDefault();
 
-        public IActionResult Detail(int id)
-        {
-            var baseDeDonnees = new BaseDeDonnees();
-
-            var donnees = baseDeDonnees.ObtenirListClubs();
-         
-            foreach (Club element in donnees)
+            if (clubRecherché == null)
             {
-                if (id == element.ClubID)
+                return View("NotFound", "Le numéro du club n'a pas été trouvé!");
+            }
+            else
+            {
+                return View("Detail",clubRecherché);
+            }
+
+        }
+
+        [Route("enfant/detail/{nom}")]
+        [Route("enfant/{nom}")]
+        [Route("{nom}")]
+        public IActionResult DetailParNom(string nom)
+        {   
+            
+            var clubRecherché = m_baseDeDonnees.Clubs.Where(c => c.Nom.ToLower() == nom.ToLower()).SingleOrDefault();
+
+            if (clubRecherché == null)
+            {
+             
+                return View("NotFound", "Le nom du club n'a pas été trouvé!");
+
+            }
+            else
+            {
+                return View("Detail", clubRecherché);
+            }
+
+        }
+
+        [Route("enfant/RechercheClub")]
+        public IActionResult RechercheClub(
+            string? MotsCles , 
+            int? MinTitreAuChampionat,
+            int? MaxTitreAuChampionat, 
+            string? choixPourClubVedette, 
+            string? EstClubPremierLigue,
+            string? EstClubLiga,
+            string? EstClubLigue1 )
+        {
+
+
+            var model = new PageRechercheViewModel();
+
+            model.Criteres = new CritereRechercheViewModel();
+
+            model.Criteres.MotsCles = MotsCles;
+            model.Criteres.choixPourClubVedette = choixPourClubVedette;
+
+            model.Criteres.EstClubPremierLigue = EstClubPremierLigue=="on"?true:false;
+            model.Criteres.EstClubLiga = EstClubLiga == "on" ? true : false;
+            model.Criteres.EstClubLigue1 = EstClubLigue1 == "on" ? true : false;
+
+            model.Criteres.MinTitreAuChampionat = MinTitreAuChampionat;
+            model.Criteres.MaxTitreAuChampionat = MaxTitreAuChampionat;
+
+
+            List<Club> clubsFiltrés = m_baseDeDonnees.Clubs;
+
+            /// Filtré par choixPourClubVedette
+            /// 
+            if (choixPourClubVedette != null)
+            {
+
+                clubsFiltrés = choixPourClubVedette=="Oui"? clubsFiltrés.Where(c => c.EstElementVedette==true).ToList() : clubsFiltrés.Where(c => c.EstElementVedette == false).ToList();
+            }
+
+            /// Filtré par MotsCles
+            /// 
+            if (MotsCles != null)
+            {
+                int id = 0;
+
+                string nom = MotsCles.ToLower();
+
+                bool conversionTermeEnInt = int.TryParse(MotsCles, out id);
+
+                clubsFiltrés = clubsFiltrés.Where(c => (c.Nom.ToLower().Contains(nom) || c.ClubID == id)).ToList();
+            }
+
+
+            ///Filtré par  EstClubPremierLigue , EstClubLiga ou EstClubLigue1
+            /// 
+            if (EstClubPremierLigue == "on" && EstClubLiga == "on" && EstClubLigue1 == "on")
+            {
+                clubsFiltrés = clubsFiltrés.Select(c => c).ToList(); 
+
+            }
+            if (EstClubPremierLigue != "on" && EstClubLiga != "on")
+            {
+                clubsFiltrés = clubsFiltrés.Where(c => c.Ligue.LigueID == 3).ToList();
+
+            } 
+            
+            if (EstClubPremierLigue != "on" && EstClubLigue1 != "on")
+            {
+                clubsFiltrés = clubsFiltrés.Where(c => c.Ligue.LigueID == 2).ToList();
+
+            } 
+            
+            if (EstClubLiga != "on" && EstClubLigue1 != "on")
+            {
+                clubsFiltrés = clubsFiltrés.Where(c => c.Ligue.LigueID == 1).ToList();
+
+            }
+            
+            if (EstClubPremierLigue != "on")
+            {
+                clubsFiltrés = clubsFiltrés.Where(c => c.Ligue.LigueID != 1).ToList();
+            }
+            
+            if (EstClubLiga != "on")
+            {
+                clubsFiltrés = clubsFiltrés.Where(c => c.Ligue.LigueID != 2).ToList();
+            }
+            
+            if (EstClubLigue1 != "on")
+            {
+                clubsFiltrés = clubsFiltrés.Where(c => c.Ligue.LigueID != 3).ToList();
+            }
+
+            ///Filtré par  MinTitreAuChampionat et MaxTitreAuChampionat
+            ///
+            if (MinTitreAuChampionat !=null && MaxTitreAuChampionat !=null)
+            {
+                if (MinTitreAuChampionat <= MaxTitreAuChampionat)
                 {
-                    return View(element);
+                    clubsFiltrés = clubsFiltrés.Where(c => (c.NombreTitreAuChampionat >= MinTitreAuChampionat) && (c.NombreTitreAuChampionat <= MaxTitreAuChampionat) ).ToList();
                 }
             }
-            return NotFound();
+
+            /// Filtre final
+            /// 
+            model.Resultat = clubsFiltrés;
+
+
+            /// retourné le model a la vue recherche
+            return View("Recherche", model);
         }
     }
 }

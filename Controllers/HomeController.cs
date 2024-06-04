@@ -1,19 +1,22 @@
-﻿using liguesEtClubs_V2.Models;
+﻿using System.Reflection;
+using liguesEtClubs_V2.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace liguesEtClubs_V2.Controllers
 {
     public class HomeController : Controller
     {
+        private BaseDeDonnees m_baseDeDonnees { get; set; }
+
+        public HomeController(BaseDeDonnees baseDeDonnees)
+        {
+            m_baseDeDonnees = baseDeDonnees;
+        }
+
         public IActionResult Index()
         {
-            ViewBag.Title = "Accueil | Page";
-            ViewBag.ActiveMenuItem = "Home";
-
-            var baseDeDonnees = new BaseDeDonnees();
-            var donnees = baseDeDonnees.ObtenirListLigues();
-
-            return View(donnees);
+           
+            return View(m_baseDeDonnees.Ligues.ToList());
         }
     }
 }
